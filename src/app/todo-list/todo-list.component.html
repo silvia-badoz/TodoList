@@ -8,6 +8,8 @@
               placeholder = "Que faire?"
               autofocus />
     </form>
+    <!--speech recognition-->
+
   </header>
   <section class="main">
     <input  class="toggle-all"
@@ -17,7 +19,7 @@
         (click)="checkAll($event)"
     />
     <ul class="todo-list">
-      <!-- MODIFS 2 : afficher liste -->
+      <!-- afficher liste -->
       <li *ngFor="let item of filterState()" [ngClass]="(item.isDone ? 'completed' : '')"> 
         <div class="view" >  <!--*ngIf="item.label != ''-->
           <input class="toggle ng-untouched ng-valid ng-dirty" type="checkbox" [ngModel]="item.isDone" (ngModelChange)="itemDone(item, $event)"/> 
@@ -32,7 +34,6 @@
     
         </div>
       </li>
-      <!-- FIN MODIFS 2-->
     </ul>
   </section>
   <footer class="footer" *ngIf="todoList.items.length != 0"> 
@@ -47,6 +48,9 @@
       <li>
         <a class="filterCompleted" [ngClass]="{'active' : filter === 'completed'}" (click)="filter='completed'">Complétées</a>
       </li>
+      <li>
+        <button (click)="deleteAll()">Tout supprimer</button>
+      </li>
     </ul>
     <div *ngIf="minimumOneCompleted()">
       <button class="clear-completed" (click)="clearCompleted()">Supprimer cochées</button>
@@ -56,6 +60,22 @@
 </section>
 <hr/>
 
+
+  <!--speech recognition
+  <div style="margin: 100px;">
+    <h1>Voice recognition</h1>
+    <button style="margin: 10px;" (click)="startService()">Start</button>
+    <button style="margin: 10px;" (click)="stopService()">Stop</button>
+    <p>{{service.text}}</p>
+</div>  -->
+
+<!-- Fonctionnalités 
+* Local Storage : OK MAIS PB EDIT 
+* Effacer tout : OK 
+* authentification
+* Reconnaissance vocale : 
+
+-->
 
 <!-- Réussi : 
 * afficher les tâches sous la barre de saisie ; OK
