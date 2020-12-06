@@ -1,3 +1,4 @@
+<body>
 <section class="todoapp">
   <header class="header">
     <h1>{{label}}</h1>
@@ -5,7 +6,7 @@
       <input  #newTodoInput
               name        = "newTodoInput"
               class       = "new-todo"
-              placeholder = "Que faire?"
+              placeholder = "What needs to be done ?"
               autofocus />
     </form>
     <!--speech recognition-->
@@ -40,25 +41,29 @@
    <span class="todo-count"><strong class="ng-binding">{{itemsLeft()}}</strong></span>
     <ul class="filters">
       <li>
-        <a class="filterAll" [ngClass]="{'active' : filter === 'all'}" (click)="filter='all'">Toutes</a>
+        <a class="filterAll" [ngClass]="{'active' : filter === 'all'}" (click)="filter='all'">All</a>
       </li>
       <li>
-        <a class="filterActives" [ngClass]="{'active' : filter === 'active'}" (click)="filter='active'">Actives</a>
+        <a class="filterActives" [ngClass]="{'active' : filter === 'active'}" (click)="filter='active'">Active</a>
       </li>
       <li>
-        <a class="filterCompleted" [ngClass]="{'active' : filter === 'completed'}" (click)="filter='completed'">Complétées</a>
+        <a class="filterCompleted" [ngClass]="{'active' : filter === 'completed'}" (click)="filter='completed'">Completed</a>
       </li>
       <li>
-        <button (click)="deleteAll()">Tout supprimer</button>
+        <button (click)="deleteAll()">Delete all</button>
       </li>
     </ul>
     <div *ngIf="minimumOneCompleted()">
-      <button class="clear-completed" (click)="clearCompleted()">Supprimer cochées</button>
+      <button class="clear-completed" (click)="clearCompleted()">Delete checked</button>
     </div>
     
   </footer>
 </section>
-<hr/>
+</body>
+
+
+
+
 
 
   <!--speech recognition
@@ -72,7 +77,7 @@
 <!-- Fonctionnalités 
 * Local Storage : OK MAIS PB EDIT 
 * Effacer tout : OK 
-* authentification
+* authentification et firebase : en cours 
 * Reconnaissance vocale : 
 
 -->

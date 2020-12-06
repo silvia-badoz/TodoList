@@ -1,10 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 import {TodoListData} from '../dataTypes/TodoListData';
 import {TodoItemData} from '../dataTypes/TodoItemData';
 import {TodoService} from '../todo.service';
 import { stringify } from 'querystring';
 import { NgIf } from '@angular/common';
 import {Observable, BehaviorSubject} from 'rxjs';
+import { FirebaseApp } from '@angular/fire';
+//import { FirebaseService } from '../services/firebase.service';
+import { async } from '@angular/core/testing';
 
 
 @Component({
@@ -17,6 +20,11 @@ export class TodoListComponent implements OnInit {
     private todoList: TodoListData; 
     stateBeforeEdit: string;
     filter: string;  
+
+    //OAuth 
+    //@Output() isLogout = newEventEmitter<void>() 
+    //
+  
  
     constructor(private todoService: TodoService) {
         todoService.getTodoListDataObservable().subscribe( tdl => this.todoList = tdl );
@@ -40,7 +48,16 @@ export class TodoListComponent implements OnInit {
 
         //this.refresh(this.label); 
         this.refresh(this.label); 
+
+ 
     }
+
+    //OAuth 
+   /* logout() {
+        this.firebaseService.logout()
+        this.isLogout.emit()
+    } */
+    //
     
     get label(): string {
         return this.todoList.label; 
@@ -151,9 +168,9 @@ export class TodoListComponent implements OnInit {
         }
 
         if (itemsLeft == 1 || itemsLeft == 0) {
-            return itemsLeft+" tâche restante";
+            return itemsLeft+" item left";
         }
-        else return itemsLeft+" tâches restantes"
+        else return itemsLeft+" items left";
     }
 
     minimumOneCompleted(): boolean { 

@@ -1,0 +1,19 @@
+#banniere {
+    height: 200px;
+    /*width: 1450px;*/
+    width: 100%;
+    margin: 0 0 0 0 px;	
+    background-image: url('images/banniere.jpg');
+    background-repeat: repeat-x;
+}
+
+/*body {
+    margin: 0 0 0 0px;
+}*/
+
+header {
+    text-align: center;
+    color: white;
+    padding: 50px;
+}
+

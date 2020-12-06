@@ -1,0 +1,26 @@
+<div class="pageWidth container">
+    <form [formGroup]="signinForm" (ngSubmit)="isSubmited()" class="mt-5 pageForm">
+      <div class="form-group ">
+  
+        <input type="email" formControlName="email" class="form-control" id="email" [ngClass]="{'is-invalid': submited && fieldValidation.email.errors}"
+               placeholder="Email address"/>
+        <div *ngIf="submited && fieldValidation.email.errors" class="invalid-feedback">
+          <div *ngIf="fieldValidation.email.errors.required">Email address required...</div>
+          <div *ngIf="fieldValidation.email.errors.email">The format of the email address is not the right one...</div>
+        </div>
+      </div>
+      <div class="form-group">
+  
+        <input type="password" formControlName="pwd" class="form-control" id="pwd" [ngClass]="{'is-invalid': submited && fieldValidation.password.errors}"
+               placeholder="Password"/>
+        <div *ngIf="submited && fieldValidation.password.errors" class="invalid-feedback">
+          <div *ngIf="fieldValidation.password.errors.required">Password required...</div>
+          <div *ngIf="fieldValidation.password.errors.minlength">Enter at least a 4 characters' password...</div>
+        </div>
+      </div>
+  
+  
+      <button type="submit" [disabled]=""  class="btn btn-success">Validate</button>
+    </form>
+  
+  </div>

@@ -1,1 +1,13 @@
-<app-todo-list></app-todo-list>
+<!-- <app-todo-list></app-todo-list> -->
+<div id="banniere"> 
+    <header>
+        <h1>Welcome !</h1>
+        <br>
+       <button id="logout" [routerLink]="['/menu']" (click)="logoutBanniere()" *ngIf="connected()">Log out</button> 
+     <!--   <button id="logout" [routerLink]="['/menu']" >Log out</button> -->
+    </header>
+</div>
+
+
+<router-outlet></router-outlet>
+
