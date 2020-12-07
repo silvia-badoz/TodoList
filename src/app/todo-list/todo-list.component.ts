@@ -20,11 +20,9 @@ export class TodoListComponent implements OnInit {
     private todoList: TodoListData; 
     stateBeforeEdit: string;
     filter: string;  
-
-    //OAuth 
-    //@Output() isLogout = newEventEmitter<void>() 
-    //
-  
+    toggle:boolean = true;
+    toggleB:boolean = true; 
+    toggleC:boolean = true; 
  
     constructor(private todoService: TodoService) {
         todoService.getTodoListDataObservable().subscribe( tdl => this.todoList = tdl );
@@ -32,6 +30,8 @@ export class TodoListComponent implements OnInit {
 
     ngOnInit() {
         this.filter = 'all'; 
+        /* ajout */
+        this.toggle = !this.toggle;
 
     /*    for (let i=0; i<localStorage.length; i++) { //permet d'afficher la liste depuis local storage quand la page est rafraîchie 
             let index = localStorage.key(i);  //let index
@@ -218,9 +218,6 @@ export class TodoListComponent implements OnInit {
     }
 
     filterState() {
-        let activeTasks = []; 
-        let completedTasks = null; 
-
         if (this.filter === 'all') {
             return this.todoList.items; 
         }
@@ -231,6 +228,30 @@ export class TodoListComponent implements OnInit {
             return this.todoList.items.filter(item => item.isDone);
             }
         } 
+
+    changeAll() { //méthode pour encadrer "All" (footer) quand on clique dessus 
+        this.filter = "all"; //affiche tous les items
+        this.toggle = false; //Class selected 
+        this.toggleB = true; 
+        this.toggleC = true; 
+
+    }
+
+    changeActive() { //méthode pour encadrer "Active" (footer) quand on clique dessus 
+        this.filter = "active"; //affiche les item non cochés
+        this.toggleB = false;
+        this.toggle = true;
+        this.toggleC = true; 
+
+    }
+    
+    changeCompleted() { //méthode pour encadrer "Completed" (footer) quand on clique dessus 
+        this.filter = "completed"; //affiche les items cochés 
+        this.toggleC = false; 
+        this.toggleB = true;
+        this.toggle = true; 
+    }
+
     
     itemLabel(item: TodoItemData, label:string) { //MARCHE PAS !! 
        // this.todoService.setItemsLabel(label, item); 
@@ -256,8 +277,5 @@ export class TodoListComponent implements OnInit {
         }
         localStorage.clear(); //supprime tous les items du local storage 
     }
-
-    //speech recognition
-    
 
 }

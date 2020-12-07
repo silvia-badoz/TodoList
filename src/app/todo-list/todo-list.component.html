@@ -41,17 +41,21 @@
    <span class="todo-count"><strong class="ng-binding">{{itemsLeft()}}</strong></span>
     <ul class="filters">
       <li>
-        <a class="filterAll" [ngClass]="{'active' : filter === 'all'}" (click)="filter='all'">All</a>
+        <a [ngClass]="{'filterAll': toggle, 'selected': !toggle}" class="filterAll" (click)="changeAll()">All</a>
       </li>
+   
       <li>
-        <a class="filterActives" [ngClass]="{'active' : filter === 'active'}" (click)="filter='active'">Active</a>
+        <a [ngClass]="{'filterActives': toggleB, 'selected': !toggleB}" class="filterActives" (click)="changeActive()">Active</a>
       </li>
+
       <li>
-        <a class="filterCompleted" [ngClass]="{'active' : filter === 'completed'}" (click)="filter='completed'">Completed</a>
+        <a [ngClass]="{'filterCompleted': toggleC, 'selected': !toggleC}" class="filterCompleted" (click)="changeCompleted()">Completed</a>
       </li>
+
       <li>
         <button (click)="deleteAll()">Delete all</button>
       </li>
+
     </ul>
     <div *ngIf="minimumOneCompleted()">
       <button class="clear-completed" (click)="clearCompleted()">Delete checked</button>
