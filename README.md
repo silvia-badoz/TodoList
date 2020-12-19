@@ -18,9 +18,9 @@ Enfin, ouvrez un navigateur et aller à l'adresse suivante :
 ## Librairies utilisées
 `angular-autofocus-fix`  
 `@angular/fire`  
-`jquery`
-` popper.js`
-` bootstrap`
+`jquery`  
+`popper.js`  
+`bootstrap`  
 
 
 ## Fonctionnalités développpées 
