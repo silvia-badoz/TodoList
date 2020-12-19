@@ -231,7 +231,7 @@ export class TodoListComponent implements OnInit {
     }
 
     
-    itemLabel(item: TodoItemData, label:string) { //MARCHE PAS !! 
+    itemLabel(item: TodoItemData, label:string) { 
        // this.todoService.setItemsLabel(label, item); 
         //local storage
         // Changer le nom de l'item
