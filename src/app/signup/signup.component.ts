@@ -3,7 +3,6 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { OauthService} from '../services/oauth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -18,9 +17,10 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      pwd: ['', [Validators.required, Validators.minLength(4)]],
+      pwd: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPwd: ['', Validators.required],
     },
-    { validator: this.pwdVerification('password', 'confirmPassword') },
+    { validator: this.pwdVerification('pwd', 'confirmPwd') },
   );
   }
 

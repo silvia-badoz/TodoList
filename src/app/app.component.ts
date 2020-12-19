@@ -26,11 +26,16 @@ export class AppComponent {
     firebase.initializeApp(firebaseConfig); 
   }
 
-  connected() {
-    return this.oauthService.loggedIn();
+  connected() { //vérifie qu'un utilisateur soit connecté
+  const user = firebase.auth().currentUser;
+  if (user) {
+    return true;
+  } else {
+    return false;
   }
+}
 
-  logoutBanniere() {
+  logoutBanniere() { //appel de la méthode logout pour le bouton Log out sur l'image de haut de page 
     this.oauthService.logout();
   }
 }

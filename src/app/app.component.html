@@ -3,11 +3,20 @@
     <header>
         <h1>Welcome !</h1>
         <br>
-       <button id="logout" [routerLink]="['/menu']" (click)="logoutBanniere()" *ngIf="connected()">Log out</button> 
-     <!--   <button id="logout" [routerLink]="['/menu']" >Log out</button> -->
+      <!-- <button id="logout" [routerLink]="['/menu']" (click)="logoutBanniere()" *ngIf="connected()">Log out</button> -->
+      <button id="logout" [routerLink]="['/menu']" (click)="logoutBanniere()" *ngIf="connected()">Log out</button>
     </header>
+
+    <router-outlet></router-outlet>
+
+    <footer id="snow">
+    </footer>
 </div>
 
 
-<router-outlet></router-outlet>
+
+
+
+
+
 

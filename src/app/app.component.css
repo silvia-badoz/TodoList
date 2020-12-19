@@ -1,6 +1,5 @@
 #banniere {
     height: 200px;
-    /*width: 1450px;*/
     width: 100%;
     margin: 0 0 0 0 px;	
     background-image: url('images/banniere.jpg');
@@ -15,5 +14,17 @@ header {
     text-align: center;
     color: white;
     padding: 50px;
+}
+
+#snow {
+    height: 200px;
+    width: 100%;
+   /* margin: 0 0 0 0px;*/
+    background-image: url('images/snow3.jpg');
+    background-repeat: repeat-x;
+    margin-top: 10%;
+   /* position: absolute;
+    bottom: 0; */
+   
 }
 

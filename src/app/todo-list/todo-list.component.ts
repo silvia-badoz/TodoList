@@ -6,8 +6,9 @@ import { stringify } from 'querystring';
 import { NgIf } from '@angular/common';
 import {Observable, BehaviorSubject} from 'rxjs';
 import { FirebaseApp } from '@angular/fire';
-//import { FirebaseService } from '../services/firebase.service';
 import { async } from '@angular/core/testing';
+import firebase from "firebase";
+import { OauthService} from '../services/oauth.service';
 
 
 @Component({
@@ -29,35 +30,11 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.filter = 'all'; 
-        /* ajout */
-        this.toggle = !this.toggle;
+        this.filter = 'all'; //affiche la liste "all" du footer
+        this.toggle = !this.toggle; //encadre le mot "all" du footer en sélectionnant la classe "selected"
 
-    /*    for (let i=0; i<localStorage.length; i++) { //permet d'afficher la liste depuis local storage quand la page est rafraîchie 
-            let index = localStorage.key(i);  //let index
-            let item = JSON.parse(localStorage.getItem(index)); //let item
-            this.appendItem(item.label); 
-            //console.log(item, index);
-            console.log(localStorage); 
-           // this.appendItem();
-         //   let localStorageItem = JSON.parse(localStorage.getItem('todoList'));
-          //  return localStorageItem == null ? [] : localStorageItem.todoList;
-           // console.log("item.label : " + item.label); 
-           // console.log("index : " + index); //todoList (clé)
-        } */
-
-        //this.refresh(this.label); 
-        this.refresh(this.label); 
-
- 
+        this.reConnection(this.label); 
     }
-
-    //OAuth 
-   /* logout() {
-        this.firebaseService.logout()
-        this.isLogout.emit()
-    } */
-    //
     
     get label(): string {
         return this.todoList.label; 
@@ -86,7 +63,7 @@ export class TodoListComponent implements OnInit {
         })  */
 
         localStorage.setItem(item.label, JSON.stringify(item)); // créer un objet dans local storage en même temps que la création d'une tâche dans la liste
-        console.log(localStorage);
+       // console.log(localStorage);
     }
 
     add(item:TodoItemData){
@@ -94,20 +71,21 @@ export class TodoListComponent implements OnInit {
         if (item.label == '' || item.label == wronglabel) { //Condition qui n'ajoute pas une tâche vide ou une tâche ne comportant qu'un espace
             return; 
         } 
-        this.todoService.appendItems(item);
-        localStorage.setItem(item.label, JSON.stringify(item));
+        else {
+            return item; 
+        }
+      //  this.todoService.appendItems(item);
+       // localStorage.setItem(item.label, JSON.stringify(item));
     }
 
-    refresh(label: string) {
+    reConnection(label: string) {
         for (let i=0; i<localStorage.length; i++) { //permet d'afficher la liste depuis local storage quand la page est rafraîchie 
             let index = localStorage.key(i);  
             let item = JSON.parse(localStorage.getItem(index)); 
-            //this.add(item.label); 
             this.add(item);
-            console.log("local storage : " + localStorage); 
-    }
-
-    }
+           // console.log("local storage : " + localStorage); 
+        }
+    } 
 
     itemDone(item: TodoItemData, done:boolean) {
         let test = true; 
@@ -134,14 +112,14 @@ export class TodoListComponent implements OnInit {
     editTodo(item: TodoItemData): void {
         this.stateBeforeEdit = item.label; 
         item.editing = true; 
-        //local storage FONCTIONNE PAS 
+        //local storage 
         localStorage.setItem(item.label, JSON.stringify(item)); //met editing à true dans local storage 
     }
 
     doneEdit(item: TodoItemData): void { 
         if (item.label.length === 0) {
            this.itemDelete(item); //permet de supprimer une tâche dans la liste (si en modifiant une tâche sa valeur vaut '')
-           //local storage FONCTIONNE PAS 
+           //local storage 
            localStorage.removeItem(item.label); //supprime l'objet dans local storage 
            // localStorage.setItem(item.label, JSON.stringify(item)); 
         } 

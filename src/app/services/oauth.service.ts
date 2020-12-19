@@ -18,7 +18,7 @@ export class OauthService {
         this.router.navigate(['/yourTodoList']);
       })
       .catch(function (error) {
-        console.log("Une erreur est survenue, votre inscription n'a pas pu être effectuée...");
+        console.log("Oops, something happened... Registration failed.");
         alert("Oops, something happened... Registration failed.");
       });
   }
@@ -31,6 +31,7 @@ export class OauthService {
       })
       .catch(function (error) {
         console.log("Oops, something happened... Connection failed.");
+        alert("Your email or password is incorrect. Please fill it again and make sure you already have an account.");
       });
   }
 
@@ -45,6 +46,7 @@ export class OauthService {
 
   logout() { //méthode de déconnexion
     firebase.auth().signOut();
+    console.log("You are disconnected.");
     this.router.navigate(['/menu']);
   }
 

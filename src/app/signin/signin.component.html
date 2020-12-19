@@ -1,5 +1,8 @@
 <div class="pageWidth container">
     <form [formGroup]="signinForm" (ngSubmit)="isSubmited()" class="mt-5 pageForm">
+
+      <h6 style="color:#021454;">You are on the connection page</h6>
+
       <div class="form-group ">
   
         <input type="email" formControlName="email" class="form-control" id="email" [ngClass]="{'is-invalid': submited && fieldValidation.email.errors}"
@@ -19,8 +22,9 @@
         </div>
       </div>
   
-  
-      <button type="submit" [disabled]=""  class="btn btn-success">Validate</button>
+     
+      <button id="val" type="submit" [disabled]="" ><span>Validate</span></button>
+      <button id="return" [routerLink]="['/menu']"><span>Return</span></button>
     </form>
   
   </div>

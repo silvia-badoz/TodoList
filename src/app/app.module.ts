@@ -17,7 +17,6 @@ const routes: Routes = [
   { path : 'menu', component: MenuComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
- /* { path: 'todo-item', component: TodoItemComponent }, */
   { path: 'yourTodoList', component: TodoListComponent },
 
   { path: '', redirectTo: '/menu', pathMatch: 'full' },

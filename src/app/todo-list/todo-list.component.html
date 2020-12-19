@@ -62,63 +62,7 @@
     </div>
     
   </footer>
+
 </section>
+
 </body>
-
-
-
-
-
-
-  <!--speech recognition
-  <div style="margin: 100px;">
-    <h1>Voice recognition</h1>
-    <button style="margin: 10px;" (click)="startService()">Start</button>
-    <button style="margin: 10px;" (click)="stopService()">Stop</button>
-    <p>{{service.text}}</p>
-</div>  -->
-
-<!-- Fonctionnalités 
-* Local Storage : OK MAIS PB EDIT 
-* Effacer tout : OK 
-* authentification et firebase : en cours 
-* Reconnaissance vocale : 
-
--->
-
-<!-- Réussi : 
-* afficher les tâches sous la barre de saisie ; OK
-* croix à droite pour supprimer chaque tache + supprimer tâche de la liste; OK 
-* faire passer une tache en isdone = true quand on la coche : OK 
-* FAIRE PASSER EDITING A TRUE QUAND ON DOUBLE CLIQUE SUR LE LABEL ; OKKKK
-      <li *ngFor="let item of items" ng-class="{isDone: todo.isDone, editing: todo == editTodo}"> 
-        <div class="view">
-          <input class="toggle ng-untouched ng-valid ng-dirty" type="checkbox" ng-model="todo.isDone" [ngModel]="item.isDone" (ngModelChange)="itemDone(item, $event)" />
-          <label (dblclick)="editTodo(item)" >{{item.label}}</label>
-
-* MODIFIER UNE TACHE EN DOUBLE CLIQUANT DESSSUS ; OKKKK 
-* escape quand on modifie une tâche ; OK
-* BARRER UNE TÂCHE COCHÉE ; OKKK
-* une nouvelle tache étant un ou des espaces ne doit pas être affichée ;  OK (seulement pour 1 espace)
-* compter nombre de tâches restantes ; OKK
-* cacher le footer tant que la liste est vide ; OK
-* modifier l'écriture des taches restantes = ecrire tache restante si 1 et tacheS restanteS si plusieurs ; OKK
-* faire les boutons : 
-  - toutes ; OK
-  - actives ; OK
-  - complétées ; OK
-  - supprimer cochées ; OK
-* quand on edit une tache, si on supprime toute la string du label + ENTRER, la tache doit disparaitre de la liste ; OKKKK
-* bouton fleche bas, permet de cocher toutes les tâches ! OKKKK
-
-
-À faire : 
-* quand on ecrit une nouvelle tache , si le  nom est une string vide (PLUSIEURS ESPACES) alors la tache n'apparait pas ; 
-
-* revoir le edit (rose)
-
-
-----BOUTONS FOOTER
-* encadrer le bouton où l'on se trouve dans le footer ; 
-
--->
