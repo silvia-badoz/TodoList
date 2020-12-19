@@ -171,7 +171,7 @@ export class TodoListComponent implements OnInit {
         }
     }
 
-    checkAll(): void { 
+    checkAll(): void { //pour sélectionner ou déselectionner toutes les tâches 
         let test = true; 
         for (var item of this.todoList.items) {
             if (item.isDone == false) {
@@ -195,7 +195,7 @@ export class TodoListComponent implements OnInit {
             }
     }
 
-    filterState() {
+    filterState() { //afficher toutes les tâches, uniquement les tâches complétées ou uniquement les tâches restantes 
         if (this.filter === 'all') {
             return this.todoList.items; 
         }
@@ -234,7 +234,6 @@ export class TodoListComponent implements OnInit {
     itemLabel(item: TodoItemData, label:string) { //MARCHE PAS !! 
        // this.todoService.setItemsLabel(label, item); 
         //local storage
-        // pour modifier l'item dans le localStorage, je le supprime dans un premier temps du localStorage, puis je remet le nouvel item modifié 
         // Changer le nom de l'item
         localStorage.removeItem(item.label); // Supprimer l'item du localStorage 
         this.todoService.setItemsLabel(label,item);
